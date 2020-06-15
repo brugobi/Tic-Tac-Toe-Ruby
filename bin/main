@@ -17,5 +17,9 @@ programme displays new updated board
 3 cases: 
     programme displays : "player1/2 is the winner"
     programme displays : "Old women (According to the brazilian version)"
+
+Data recived from user
+    the name of the player in a string variable player_name1/2
+    the numbers that a player picks are stored in an integer array picks_player1/2
     
 =end
