@@ -1,28 +1,5 @@
 #!/usr/bin/env ruby
 
-# programme prints "Welcome to Tic Tac Toe game"
-# programme asks the player1 name
-# proramme prints " #{playes1 name} your totem is O"
-# programme asks the player2 name
-# proramme prints " #{playes2 name} your totem is X"
-# programme prints the Board
-# programme asks palayer1 : "Pick an avalible number"
-# programme validates the picks if it's not avalible programme
-# prints "Sorry this number is not avalible anymore, choose an other one"
-# programme displays new updated board
-# programme asks player2 : "Pick an avalible number"
-# programme validates the picks if it's not avalible programme prints
-# "Sorry this number is not avalible anymore, choose an other one"
-# programme displays new updated board
-# ---- iterate till the end of the game----
-# 3 cases:
-#     programme displays : "player1/2 is the winner"
-#     programme displays : "Old women (According to the brazilian version)"
-
-# Data recived from user
-#     the name of the player in a string variable player_name1/2
-#     the numbers that a player picks are stored in an integer array picks_player1/2
-
 puts '*********************************************'
 puts ''
 puts '******* Welcome to Tic Tac Toe game *********'
