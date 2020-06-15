@@ -23,3 +23,46 @@ Data recived from user
     the numbers that a player picks are stored in an integer array picks_player1/2
     
 =end
+
+puts 'Welcome to Tic Tac Toe game'
+puts 'player 1: Please enter your name'
+player1_name = gets.chomp.capitalize 
+puts "#{player1_name} your totem is O"
+puts 'player 2: Please enter your name'
+player2_name = gets.chomp.capitalize
+puts "#{player2_name} your totem is X"
+puts '1 | 2 | 3
+---------
+4 | 5 | 6
+---------
+7 | 8 | 9'
+puts "#{player1_name} Pick an avalible number"
+picks_player1 = []
+picks_player1 << gets.chomp.to_i
+# if the number was already choosen, diplay: Sorry this number is not avalible anymore, choose an other one
+# if is the number is out of the range, diplay: Please, choose a number avalible from 1 to 9
+# else display the board
+puts '1 | 2 | 3
+---------
+4 | 5 | 6
+---------
+7 | 8 | 9'
+puts "#{player2_name} Pick an avalible number"
+picks_player2 = []
+picks_player2 << gets.chomp.to_i
+# if the number was already choosen, diplay: Sorry this number is not avalible anymore, choose an other one  
+# if is the number is out of the range, diplay: Please, choose a number avalible from 1 to 9
+# else display the board
+puts '1 | 2 | 3
+---------
+4 | 5 | 6
+---------
+7 | 8 | 9'
+#  ---- iterate till the end of the game---- 
+# puts the name of the winner or if the game is draw ('old lady')    
+
+
+
+ 
+
+
