@@ -7,10 +7,12 @@
 # proramme prints " #{playes2 name} your totem is X"
 # programme prints the Board
 # programme asks palayer1 : "Pick an avalible number"
-# programme validates the picks if it's not avalible programme prints "Sorry this number is not avalible anymore, choose an other one"
+# programme validates the picks if it's not avalible programme
+# prints "Sorry this number is not avalible anymore, choose an other one"
 # programme displays new updated board
 # programme asks player2 : "Pick an avalible number"
-# programme validates the picks if it's not avalible programme prints "Sorry this number is not avalible anymore, choose an other one"
+# programme validates the picks if it's not avalible programme prints
+# "Sorry this number is not avalible anymore, choose an other one"
 # programme displays new updated board
 # ---- iterate till the end of the game----
 # 3 cases:
@@ -46,9 +48,9 @@ puts ''
 puts "#{player1_name} Pick an avalible number"
 picks_player1 = []
 picks_player1 << gets.chomp.to_i
-# if the number was already choosen,
-#  diplay: Sorry this number is not avalible anymore, choose an other one
-# if is the number is out of the range, 
+# if the number was already choosen
+# diplay: Sorry this number is not avalible anymore, choose an other one
+# if is the number is out of the range
 # diplay: Please, choose a number avalible from 1 to 9
 # else display the board
 puts ''
