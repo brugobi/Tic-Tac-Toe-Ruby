@@ -7,12 +7,14 @@ puts ''
 puts '*********************************************'
 puts 'player 1: Please enter your name'
 player1_name = gets.chomp.capitalize
+# create player1 orbject
 puts ''
 puts "#{player1_name} your totem is O"
 puts ''
 puts 'player 2: Please enter your name'
 puts ''
 player2_name = gets.chomp.capitalize
+# create player1 orbject
 puts ''
 puts "#{player2_name} your totem is X"
 puts ''
@@ -25,13 +27,10 @@ puts "#{grid_array[0]} | #{grid_array[1]} | #{grid_array[2]}
 #{grid_array[6]} | #{grid_array[7]} | #{grid_array[8]}"
 puts ''
 puts "#{player1_name} Pick an avalible number"
-picks_player1 = [] # instantiate new picks
-picks_player1 << gets.chomp.to_i
-# if the number was already choosen
-# diplay: Sorry this number is not avalible anymore, choose an other one
-# if is the number is out of the range
-# diplay: Please, choose a number avalible from 1 to 9
-# else display the board
+picks1 = [] # instantiate new picks picks1= Picks.new.picks_player
+picks1 << gets.chomp.to_i
+# instantiate a validator class 
+# picks1.winner?
 puts ''
 puts '1 | 2 | 3
 ---------
