@@ -1,3 +1,21 @@
 #!/usr/bin/env ruby
-
-puts 'Hello world!'
+=begin
+  
+programme prints "Welcome to Tic Tac Toe game"
+programme asks the player1 name
+proramme prints " #{playes1 name} your totem is O"
+programme asks the player2 name
+proramme prints " #{playes2 name} your totem is X"
+programme prints the Board
+programme asks palayer1 : "Pick an avalible number"
+programme validates the picks if it's not avalible programme prints "Sorry this number is not avalible anymore, choose an other one"
+programme displays new updated board
+programme asks player2 : "Pick an avalible number"
+programme validates the picks if it's not avalible programme prints "Sorry this number is not avalible anymore, choose an other one"
+programme displays new updated board
+---- iterate till the end of the game----
+3 cases: 
+    programme displays : "player1/2 is the winner"
+    programme displays : "Old women (According to the brazilian version)"
+    
+=end
