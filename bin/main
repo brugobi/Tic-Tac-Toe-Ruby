@@ -25,7 +25,7 @@ puts "#{grid_array[0]} | #{grid_array[1]} | #{grid_array[2]}
 #{grid_array[6]} | #{grid_array[7]} | #{grid_array[8]}"
 puts ''
 puts "#{player1_name} Pick an avalible number"
-picks_player1 = []
+picks_player1 = [] # instantiate new picks
 picks_player1 << gets.chomp.to_i
 # if the number was already choosen
 # diplay: Sorry this number is not avalible anymore, choose an other one
