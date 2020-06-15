@@ -13,7 +13,7 @@
 # programme validates the picks if it's not avalible programme prints "Sorry this number is not avalible anymore, choose an other one"
 # programme displays new updated board
 # ---- iterate till the end of the game----
-# 3 cases: 
+# 3 cases:
 #     programme displays : "player1/2 is the winner"
 #     programme displays : "Old women (According to the brazilian version)"
 
@@ -62,7 +62,7 @@ puts "#{player2_name} Pick an avalible number"
 picks_player2 = []
 picks_player2 << gets.chomp.to_i
 # if the number was already choosen,
-#  diplay: Sorry this number is not avalible anymore, choose an other one  
+#  diplay: Sorry this number is not avalible anymore, choose an other one
 # if is the number is out of the range,
 #  diplay: Please, choose a number avalible from 1 to 9
 # else display the board
@@ -72,5 +72,5 @@ puts '1 | 2 | 3
 4 | 5 | 6
 ---------
 7 | 8 | 9'
-#  ---- iterate till the end of the game---- 
-# puts the name of the winner or if the game is draw ('old lady')    
+#  ---- iterate till the end of the game----
+# puts the name of the winner or if the game is draw ('old lady')
