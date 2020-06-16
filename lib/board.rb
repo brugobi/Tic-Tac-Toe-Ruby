@@ -12,4 +12,12 @@ class Board
     @@board_grid[@picked_numb -1] = player_totem
     return @@board_grid
   end
+
+  def grid_filled?
+    result = false
+    if @@board_grid.all?(String)
+      result = true
+    end
+    result
+  end
 end

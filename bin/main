@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
-
+require './lib/player.rb'
+require './lib/board.rb'
+require './lib/picks.rb'
 puts '*********************************************'
 puts ''
 puts '******* Welcome to Tic Tac Toe game *********'
@@ -8,6 +10,7 @@ puts '*********************************************'
 puts 'player 1: Please enter your name'
 player1_name = gets.chomp.capitalize
 # create player1 orbject
+player1 = Player.new(player1_name)
 puts ''
 puts "#{player1_name} your totem is O"
 puts ''
@@ -15,11 +18,13 @@ puts 'player 2: Please enter your name'
 puts ''
 player2_name = gets.chomp.capitalize
 # create player1 orbject
+player2 = Player.new(player2_name)
 puts ''
 puts "#{player2_name} your totem is X"
 puts ''
 # use an object board to be able to print the folowing
-grid_array = [1 , 2 , 3, 4, 5, 6, 7, 8, 9] # to be subsituted with board.update_grid
+board0= Board.new
+grid_array = board0.update_grid # to be subsituted with board.update_grid
 puts "#{grid_array[0]} | #{grid_array[1]} | #{grid_array[2]}
 ---------
 #{grid_array[3]} | #{grid_array[4]} | #{grid_array[5]}

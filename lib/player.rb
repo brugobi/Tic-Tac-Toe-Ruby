@@ -1,8 +1,8 @@
 # inputs : player name(string) ** outputs:
 class Player
-  attr_acessor :name
+  attr_accessor :name
 
-  def  initilize(name)
+  def  initialize(name)
     @name = name
   end
 
