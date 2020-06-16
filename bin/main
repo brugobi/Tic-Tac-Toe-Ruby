@@ -2,6 +2,7 @@
 require './lib/player.rb'
 require './lib/board.rb'
 require './lib/validation.rb'
+include Validation
 puts '*********************************************'
 puts ''
 puts '******* Welcome to Tic Tac Toe game *********'
@@ -34,6 +35,17 @@ puts "#{grid_array[0]} | #{grid_array[1]} | #{grid_array[2]}
 puts ''
 puts "#{player1_name} Pick an avalible number"
 pick = gets.chomp.to_i
+
+until (Validation.pick_valid?(pick) && Validation.not_picked?(pick , grid_array)) do
+  if !Validation.pick_valid?(pick)
+    puts 'Your pick is not valid ! pick a number from 1 to 9'
+    pick = gets.chomp.to_i
+  elsif !Validation.not_picked?(pick , grid_array)
+    puts 'Number already picked, Try again'
+    pick = gets.chomp.to_i
+  end
+end
+
 # validate the pick
 player1.picks_array << pick
 puts ''
@@ -48,7 +60,17 @@ puts "#{grid_array[0]} | #{grid_array[1]} | #{grid_array[2]}
 puts ''
 puts "#{player2_name} Pick an avalible number"
 pick = gets.chomp.to_i
-# validate the pick
+
+until (Validation.pick_valid?(pick) && Validation.not_picked?(pick , grid_array)) do
+  if !Validation.pick_valid?(pick)
+    puts 'Your pick is not valid ! pick a number from 1 to 9'
+    pick = gets.chomp.to_i
+  elsif !Validation.not_picked?(pick , grid_array)
+    puts 'Number already picked, Try again'
+    pick = gets.chomp.to_i
+  end
+end
+
 player2.picks_array << pick
 
 board2 = Board.new(pick , "X")

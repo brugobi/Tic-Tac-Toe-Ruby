@@ -9,7 +9,7 @@ module Validation
     result
   end
 
-  def already_picked? (pick, board_grid)
+  def not_picked? (pick, board_grid)
     result = false
     if board_grid.include?(pick)
       result = true
@@ -21,4 +21,4 @@ end
 
 # teste 
 include Validation
-p Validation.already_picked?(6, [1, 2, 7, "X", 6])
+p Validation.not_picked?(6, [1, 2, 7, "X", 6])
