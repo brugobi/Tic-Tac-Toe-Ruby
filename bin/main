@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require './lib/player.rb'
 require './lib/board.rb'
-require './lib/picks.rb'
+require './lib/validation.rb'
 puts '*********************************************'
 puts ''
 puts '******* Welcome to Tic Tac Toe game *********'
@@ -10,7 +10,7 @@ puts '*********************************************'
 puts 'player 1: Please enter your name'
 player1_name = gets.chomp.capitalize
 # create player1 orbject
-player1 = Player.new(player1_name)
+player1 = Player.new(player1_name, [])
 puts ''
 puts "#{player1_name} your totem is O"
 puts ''
@@ -18,13 +18,14 @@ puts 'player 2: Please enter your name'
 puts ''
 player2_name = gets.chomp.capitalize
 # create player1 orbject
-player2 = Player.new(player2_name)
+player2 = Player.new(player2_name, [])
 puts ''
 puts "#{player2_name} your totem is X"
 puts ''
-# use an object board to be able to print the folowing
+# Game initialization
 board0= Board.new
-grid_array = board0.update_grid # to be subsituted with board.update_grid
+grid_array = board0.get_board_grid
+# Display new Board
 puts "#{grid_array[0]} | #{grid_array[1]} | #{grid_array[2]}
 ---------
 #{grid_array[3]} | #{grid_array[4]} | #{grid_array[5]}
@@ -32,30 +33,37 @@ puts "#{grid_array[0]} | #{grid_array[1]} | #{grid_array[2]}
 #{grid_array[6]} | #{grid_array[7]} | #{grid_array[8]}"
 puts ''
 puts "#{player1_name} Pick an avalible number"
-picks1 = [] # instantiate new picks picks1= Picks.new.picks_player
-picks1 << gets.chomp.to_i
-# instantiate a validator class 
-# picks1.winner?
+pick = gets.chomp.to_i
+# validate the pick
+player1.picks_array << pick
 puts ''
-puts '1 | 2 | 3
+board1 = Board.new(pick , "O")
+grid_array = board1.update_grid
+#display
+puts "#{grid_array[0]} | #{grid_array[1]} | #{grid_array[2]}
 ---------
-4 | 5 | 6
+#{grid_array[3]} | #{grid_array[4]} | #{grid_array[5]}
 ---------
-7 | 8 | 9'
+#{grid_array[6]} | #{grid_array[7]} | #{grid_array[8]}"
 puts ''
 puts "#{player2_name} Pick an avalible number"
-picks_player2 = []
-picks_player2 << gets.chomp.to_i
+pick = gets.chomp.to_i
+# validate the pick
+player2.picks_array << pick
+
+board2 = Board.new(pick , "X")
+grid_array = board2.update_grid
+#display
+puts "#{grid_array[0]} | #{grid_array[1]} | #{grid_array[2]}
+---------
+#{grid_array[3]} | #{grid_array[4]} | #{grid_array[5]}
+---------
+#{grid_array[6]} | #{grid_array[7]} | #{grid_array[8]}"
+puts ''
 # if the number was already choosen,
 #  diplay: Sorry this number is not avalible anymore, choose an other one
 # if is the number is out of the range,
 #  diplay: Please, choose a number avalible from 1 to 9
 # else display the board
-puts ''
-puts '1 | 2 | 3
----------
-4 | 5 | 6
----------
-7 | 8 | 9'
 #  ---- iterate till the end of the game----
 # puts the name of the winner or if the game is draw ('old lady')
