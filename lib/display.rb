@@ -1,9 +1,9 @@
 # Module for all the displays
 module Display
   def welcome_message
-    "*********************************************\n
-    ******* Welcome to Tic Tac Toe game *********\n
-    *********************************************"
+    "*********************************************
+******* Welcome to Tic Tac Toe game *********
+*********************************************"
   end
 
   def enter_player(number)
@@ -15,11 +15,11 @@ module Display
   end
 
   def display_grid(grid_array)
-    "\n#{grid_array[0]} | #{grid_array[1]} | #{grid_array[2]}\n
-    ---------\n
-    #{grid_array[3]} | #{grid_array[4]} | #{grid_array[5]}\n
-    ---------\n
-    #{grid_array[6]} | #{grid_array[7]} | #{grid_array[8]}\n"
+    "\n#{grid_array[0]} | #{grid_array[1]} | #{grid_array[2]}
+---------
+#{grid_array[3]} | #{grid_array[4]} | #{grid_array[5]}
+---------
+#{grid_array[6]} | #{grid_array[7]} | #{grid_array[8]}\n"
   end
 
   def pick_number(name)
