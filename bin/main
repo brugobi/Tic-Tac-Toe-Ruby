@@ -5,69 +5,63 @@ require './lib/validation.rb'
 require './lib/display.rb'
 include Validation
 include Display
+
+#Initialize the game
+
 puts Display.welcome_message
 puts Display.enter_player(1)
+
+# create player1 object
 player1_name = gets.chomp.capitalize
-# create player1 orbject
 player1 = Player.new(player1_name, [])
 puts Display.assign_totem(player1_name, 1)
 
+# create player2 object
 puts Display.enter_player(2)
 player2_name = gets.chomp.capitalize
-# create player2 orbject
 player2 = Player.new(player2_name, [])
 puts Display.assign_totem(player2_name, 2)
 
-# Game initialization
+# Start game
 
-puts Display.display_grid((1..9).to_a)
-board0 = Board.new
-until player1.winner? || player2.winner? || board0.grid_filled? do 
+board = Board.new
+puts Display.display_grid(board.grid)
 
-puts Display.pick_number(player1_name) 
-pick = gets.chomp.to_i
-
-until (Validation.pick_valid?(pick) && Validation.not_picked?(pick , board0.get_board_grid)) do
-  if !Validation.pick_valid?(pick)
-    puts Display.pick_not_valid
-    pick = gets.chomp.to_i
-  elsif !Validation.not_picked?(pick , board0.get_board_grid)
-    puts Display.already_picked
-    pick = gets.chomp.to_i
+until player1.winner? || player2.winner? || board.grid_filled? do 
+  # player1 turn
+  puts Display.pick_number(player1.name)
+  pick = gets.chomp.to_i
+  until (Validation.pick_valid?(pick) && Validation.not_picked?(pick , board.grid)) do
+    if !Validation.pick_valid?(pick)
+      puts Display.pick_not_valid
+      pick = gets.chomp.to_i
+    elsif !Validation.not_picked?(pick , board.grid)
+      puts Display.already_picked
+      pick = gets.chomp.to_i
+    end
   end
-end
+  player1.picks_array << pick
+  board.update_grid(pick , "O")
+  puts Display.display_grid(board.grid)
 
-# validate the pick
-player1.picks_array << pick
-puts ''
-board1 = Board.new(pick , "O")
-grid_array = board1.update_grid
-#display
-
-puts Display.display_grid(board1.get_board_grid)
-
-puts Display.pick_number(player2_name) 
-pick = gets.chomp.to_i
-
-until (Validation.pick_valid?(pick) && Validation.not_picked?(pick , grid_array)) do
-  if !Validation.pick_valid?(pick)
-    puts Display.pick_not_valid
-    pick = gets.chomp.to_i
-  elsif !Validation.not_picked?(pick , grid_array)
-    puts Display.already_picked
-    pick = gets.chomp.to_i
+  #player2 turn
+  puts Display.pick_number(player2_name) 
+  pick = gets.chomp.to_i
+  until (Validation.pick_valid?(pick) && Validation.not_picked?(pick , board.grid)) do
+    if !Validation.pick_valid?(pick)
+      puts Display.pick_not_valid
+      pick = gets.chomp.to_i
+    elsif !Validation.not_picked?(pick , board.grid)
+      puts Display.already_picked
+      pick = gets.chomp.to_i
+    end
   end
-end
 
-player2.picks_array << pick
+  player2.picks_array << pick
 
-board2 = Board.new(pick , "X")
-#display
-puts Display.display_grid(board2.update_grid)
-puts ''
-#  ---- iterate till the end of the game----
-# puts the name of the winner or if the game is draw ('old lady')
-
+  board.update_grid(pick , "X")
+  #display
+  puts Display.display_grid(board.update_grid)
 end 
 
 if player1.winner? 
