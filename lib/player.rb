@@ -12,7 +12,7 @@ class Player
   def winner?
     result = false
     POSSIBILITIES.each do |array|
-      result = array.all? { |elem| @picks_array.include?(elem) }
+      result ||= array.all? { |elem| @picks_array.include?(elem) }
     end
     result
   end

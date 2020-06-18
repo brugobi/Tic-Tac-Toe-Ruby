@@ -48,9 +48,11 @@ turn = proc do |player|
   puts Display.display_grid(board.grid)
 end
 
-until player1.winner? || player2.winner? || board.grid_filled?
+loop do
   turn.call(player1)
+  break if player1.winner? || board.grid_filled?
   turn.call(player2)
+  break if player2.winner? || board.grid_filled?
 end
 
 # end of the game
