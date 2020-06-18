@@ -17,12 +17,9 @@ concepts of good sportsmanship or to write a computer program to play it. (WIKIP
 Tic-tac-toe, 2020. Home page available in: <https://en.wikipedia.org/wiki/Tic-tac-toe>. 
 Accessed on: June 17th. 2020.
 
- - Assignment 
+ - About this project
 
-Build a *tic-tac-toe* game on the command line where two human players can play against each 
-other and the board is displayed in between turns, checking for victory in a game loop… all the 
-conditions that make it a fun little problem to solve using OOP setting up the different elements
-within the game using *classes*, *Instance variables* and *Methods*.
+In this project we tried to build a *tic-tac-toe* game on the command line where two human players can play against each other and the board is displayed in between turns. The aim of this exercise is to learn about the Object Oriented Programming by using *classes*, *Instances*, *Modules* and relationships between objects.
 
 ## Built With
 
@@ -31,22 +28,22 @@ within the game using *classes*, *Instance variables* and *Methods*.
 
 ## Getting Started
 
-**To test *tic-tac-toe* game:**
- - you need to have ruby installed on your machine.
- - Clone the repo and then in your terminal execute **ruby main.rb**
-
 **Cloning a Git repository:**
-   - From the repository, click + in the global sidebar and select Clone this repository under Get to work.
-   - Copy the clone command (either the SSH format or the HTTPS). ...
-   - From a terminal window, change to the local directory where you want to clone your repository.
+ - From the repository, click + in the global sidebar and select Clone this repository under Get to work.
+ - Copy the clone command (either the SSH format or the HTTPS). ...
+ - From a terminal window, change to the local directory where you want to clone your repository.
+
+**To test *tic-tac-toe* game:**
+ - You need to have ruby installed on your machine.
+ - After Cloning the repo in your local machin, execute  **main** command in your terminal.
 
 ## Authors
 
-👤 **Houda Chercaoui**
+👤 **Houda Cherkaoui**
 
-- Github: [@brugobi](https://github.com/brugobi)
-- Twitter: [@BrunaGobi2](https://twitter.com/BrunaGobi2)
-- Linkedin: [bruna-gobi](https://www.linkedin.com/in/bruna-gobi/)
+- Github: [@CalyCherkaoui](https://github.com/CalyCherkaoui)
+- Twitter: [@Houda59579688](https://twitter.com/Houda59579688)
+- Linkedin: [Houda-Cherkaoui](https://www.linkedin.com/in/houda-cherkaoui-64106395/)
 
 👤 **Bruna Gobi**
 
