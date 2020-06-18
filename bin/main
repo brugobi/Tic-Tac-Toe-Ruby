@@ -67,6 +67,9 @@ puts Display.display_grid(board2.update_grid)
 puts ''
 #  ---- iterate till the end of the game----
 # puts the name of the winner or if the game is draw ('old lady')
+
+end 
+
 if player1.winner? 
   puts Display.the_winner(player1.name)
 elsif player2.winner?
@@ -74,5 +77,3 @@ elsif player2.winner?
 else
   puts Display.draw  
 end
-
-end 
