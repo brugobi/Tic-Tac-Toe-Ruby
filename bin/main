@@ -9,18 +9,18 @@ include Display
 #Initialize the game
 
 puts Display.welcome_message
-puts Display.enter_player(1)
 
 # create player1 object
+puts Display.enter_player(1)
 player1_name = gets.chomp.capitalize
-player1 = Player.new(player1_name, [])
-puts Display.assign_totem(player1_name, 1)
+player1 = Player.new(player1_name, [], "O")
+puts Display.assign_totem(player1)
 
 # create player2 object
 puts Display.enter_player(2)
 player2_name = gets.chomp.capitalize
-player2 = Player.new(player2_name, [])
-puts Display.assign_totem(player2_name, 2)
+player2 = Player.new(player2_name, [], "X")
+puts Display.assign_totem(player2)
 
 # Start game
 
@@ -39,21 +39,18 @@ validate_pick = proc do |pick, array|
   end
 end
 
+turn = proc do |player|
+  puts Display.pick_number(player.name)
+  pick = gets.chomp.to_i
+  validate_pick.call(pick, board.grid)
+  player.picks_array << pick
+  board.update_grid(pick , player.totem)
+  puts Display.display_grid(board.grid)
+end
+
 until player1.winner? || player2.winner? || board.grid_filled? do 
-  # player1 turn
-  puts Display.pick_number(player1.name)
-  pick = gets.chomp.to_i
-  validate_pick.call(pick,board.grid)
-  player1.picks_array << pick
-  board.update_grid(pick , "O")
-  puts Display.display_grid(board.grid)
-  #player2 turn
-  puts Display.pick_number(player2_name) 
-  pick = gets.chomp.to_i
-  validate_pick.call(pick,board.grid)
-  player2.picks_array << pick
-  board.update_grid(pick , "X")
-  puts Display.display_grid(board.grid)
+  turn.call(player1)
+  turn.call(player2)
 end 
 
 # end of the game
@@ -64,3 +61,4 @@ elsif player2.winner?
 else
   puts Display.draw  
 end
+
