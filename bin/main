@@ -27,43 +27,36 @@ puts Display.assign_totem(player2_name, 2)
 board = Board.new
 puts Display.display_grid(board.grid)
 
+validate_pick = proc do |pick, array|
+  until (Validation.pick_valid?(pick) && Validation.not_picked?(pick , array)) do
+      if !Validation.pick_valid?(pick)
+        puts Display.pick_not_valid
+        pick = gets.chomp.to_i
+      elsif !Validation.not_picked?(pick , array)
+        puts Display.already_picked
+        pick = gets.chomp.to_i
+      end
+  end
+end
+
 until player1.winner? || player2.winner? || board.grid_filled? do 
   # player1 turn
   puts Display.pick_number(player1.name)
   pick = gets.chomp.to_i
-  until (Validation.pick_valid?(pick) && Validation.not_picked?(pick , board.grid)) do
-    if !Validation.pick_valid?(pick)
-      puts Display.pick_not_valid
-      pick = gets.chomp.to_i
-    elsif !Validation.not_picked?(pick , board.grid)
-      puts Display.already_picked
-      pick = gets.chomp.to_i
-    end
-  end
+  validate_pick.call(pick,board.grid)
   player1.picks_array << pick
   board.update_grid(pick , "O")
   puts Display.display_grid(board.grid)
-
   #player2 turn
   puts Display.pick_number(player2_name) 
   pick = gets.chomp.to_i
-  until (Validation.pick_valid?(pick) && Validation.not_picked?(pick , board.grid)) do
-    if !Validation.pick_valid?(pick)
-      puts Display.pick_not_valid
-      pick = gets.chomp.to_i
-    elsif !Validation.not_picked?(pick , board.grid)
-      puts Display.already_picked
-      pick = gets.chomp.to_i
-    end
-  end
-
+  validate_pick.call(pick,board.grid)
   player2.picks_array << pick
-
   board.update_grid(pick , "X")
-  #display
-  puts Display.display_grid(board.update_grid)
+  puts Display.display_grid(board.grid)
 end 
 
+# end of the game
 if player1.winner? 
   puts Display.the_winner(player1.name)
 elsif player2.winner?
