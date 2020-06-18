@@ -6,20 +6,20 @@ require './lib/display.rb'
 include Validation
 include Display
 
-#Initialize the game
+# Initialize the game
 
 puts Display.welcome_message
 
 # create player1 object
 puts Display.enter_player(1)
 player1_name = gets.chomp.capitalize
-player1 = Player.new(player1_name, [], "O")
+player1 = Player.new(player1_name, 'O', [])
 puts Display.assign_totem(player1)
 
 # create player2 object
 puts Display.enter_player(2)
 player2_name = gets.chomp.capitalize
-player2 = Player.new(player2_name, [], "X")
+player2 = Player.new(player2_name, 'X', [])
 puts Display.assign_totem(player2)
 
 # Start game
@@ -28,14 +28,14 @@ board = Board.new
 puts Display.display_grid(board.grid)
 
 validate_pick = proc do |pick, array|
-  until (Validation.pick_valid?(pick) && Validation.not_picked?(pick , array)) do
-      if !Validation.pick_valid?(pick)
-        puts Display.pick_not_valid
-        pick = gets.chomp.to_i
-      elsif !Validation.not_picked?(pick , array)
-        puts Display.already_picked
-        pick = gets.chomp.to_i
-      end
+  until Validation.pick_valid?(pick) && Validation.not_picked?(pick, array)
+    if !Validation.pick_valid?(pick)
+      puts Display.pick_not_valid
+      pick = gets.chomp.to_i
+    elsif !Validation.not_picked?(pick, array)
+      puts Display.already_picked
+      pick = gets.chomp.to_i
+    end
   end
 end
 
@@ -44,21 +44,20 @@ turn = proc do |player|
   pick = gets.chomp.to_i
   validate_pick.call(pick, board.grid)
   player.picks_array << pick
-  board.update_grid(pick , player.totem)
+  board.update_grid(pick, player.totem)
   puts Display.display_grid(board.grid)
 end
 
-until player1.winner? || player2.winner? || board.grid_filled? do 
+until player1.winner? || player2.winner? || board.grid_filled?
   turn.call(player1)
   turn.call(player2)
-end 
+end
 
 # end of the game
-if player1.winner? 
+if player1.winner?
   puts Display.the_winner(player1.name)
 elsif player2.winner?
   puts Display.the_winner(player2.name)
 else
-  puts Display.draw  
+  puts Display.draw
 end
-

@@ -2,7 +2,7 @@
 # outputs : [1 , X , 3, 4, 5, 6, 7, 8, 9]
 class Board
   attr_accessor :grid
-  def initialize (grid = [1, 2, 3, 4, 5, 6, 7, 8, 9])
+  def initialize(grid = [1, 2, 3, 4, 5, 6, 7, 8, 9])
     @grid = grid
   end
 
@@ -13,11 +13,6 @@ class Board
   end
 
   def grid_filled?
-    result = false
-    if @grid.all?(String)
-      result = true
-    end
-    result
+    @grid.all?(String)
   end
 end
-

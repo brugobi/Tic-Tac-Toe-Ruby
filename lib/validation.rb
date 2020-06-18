@@ -1,24 +1,12 @@
-#Module with all validation methods
+# Module with all validation methods
 module Validation
-  ARRAY_POSITIONS = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  ARRAY_POSITIONS = [1, 2, 3, 4, 5, 6, 7, 8, 9].freez
+
   def pick_valid?(pick)
-    result = false
-    if ARRAY_POSITIONS.include?(pick)
-      result = true
-    end
-    result
+    ARRAY_POSITIONS.include?(pick)
   end
 
-  def not_picked? (pick, board_grid)
-    result = false
-    if board_grid.include?(pick)
-      result = true
-    end
-    result
+  def not_picked?(pick, board_grid)
+    board_grid.include?(pick)
   end
-# ARRAY_POSITIONS.include?(pick)? true : result false   
 end
-
-# # teste 
-# include Validation
-# p Validation.not_picked?(6, [1, 2, 7, "X", 6])
