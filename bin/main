@@ -19,27 +19,20 @@ player2 = Player.new(player2_name, [])
 puts Display.assign_totem(player2_name, 2)
 
 # Game initialization
-board0= Board.new
-grid_array = board0.get_board_grid
-# Display new Board
-puts "#{grid_array[0]} | #{grid_array[1]} | #{grid_array[2]}
----------
-#{grid_array[3]} | #{grid_array[4]} | #{grid_array[5]}
----------
-#{grid_array[6]} | #{grid_array[7]} | #{grid_array[8]}"
-puts ''
 
+puts Display.display_grid((1..9).to_a)
+board0 = Board.new
 until player1.winner? || player2.winner? || board0.grid_filled? do 
 
-puts "#{player1_name} Pick an avalible number"
+puts Display.pick_number(player1_name) 
 pick = gets.chomp.to_i
 
-until (Validation.pick_valid?(pick) && Validation.not_picked?(pick , grid_array)) do
+until (Validation.pick_valid?(pick) && Validation.not_picked?(pick , board0.get_board_grid)) do
   if !Validation.pick_valid?(pick)
-    puts 'Your pick is not valid ! pick a number from 1 to 9'
+    puts Display.pick_not_valid
     pick = gets.chomp.to_i
-  elsif !Validation.not_picked?(pick , grid_array)
-    puts 'Number already picked, Try again'
+  elsif !Validation.not_picked?(pick , board0.get_board_grid)
+    puts Display.already_picked
     pick = gets.chomp.to_i
   end
 end
@@ -51,16 +44,17 @@ board1 = Board.new(pick , "O")
 grid_array = board1.update_grid
 #display
 
-puts Display.display_grid((1..9).to_a)
+puts Display.display_grid(board1.get_board_grid)
 
-puts "#{player2_name} Pick an avalible number"
+puts Display.pick_number(player2_name) 
 pick = gets.chomp.to_i
+
 until (Validation.pick_valid?(pick) && Validation.not_picked?(pick , grid_array)) do
   if !Validation.pick_valid?(pick)
-    puts 'Your pick is not valid ! pick a number from 1 to 9'
+    puts Display.pick_not_valid
     pick = gets.chomp.to_i
   elsif !Validation.not_picked?(pick , grid_array)
-    puts 'Number already picked, Try again'
+    puts Display.already_picked
     pick = gets.chomp.to_i
   end
 end
