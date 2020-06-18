@@ -25,6 +25,12 @@ module Display
   def already_picked
     '\nNumber already picked, Try again'
   end
+  def the_winner (name)
+    "The winner is: #{name}"
+  end
+  def draw
+    'It is a Draw'
+  end  
 end
 
 # include Display
