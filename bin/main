@@ -2,27 +2,22 @@
 require './lib/player.rb'
 require './lib/board.rb'
 require './lib/validation.rb'
+require './lib/display.rb'
 include Validation
-puts '*********************************************'
-puts ''
-puts '******* Welcome to Tic Tac Toe game *********'
-puts ''
-puts '*********************************************'
-puts 'player 1: Please enter your name'
+include Display
+puts Display.welcome_message
+puts Display.enter_player(1)
 player1_name = gets.chomp.capitalize
 # create player1 orbject
 player1 = Player.new(player1_name, [])
-puts ''
-puts "#{player1_name} your totem is O"
-puts ''
-puts 'player 2: Please enter your name'
-puts ''
+puts Display.assign_totem(player1_name, 1)
+
+puts Display.enter_player(2)
 player2_name = gets.chomp.capitalize
-# create player1 orbject
+# create player2 orbject
 player2 = Player.new(player2_name, [])
-puts ''
-puts "#{player2_name} your totem is X"
-puts ''
+puts Display.assign_totem(player2_name, 2)
+
 # Game initialization
 board0= Board.new
 grid_array = board0.get_board_grid
@@ -55,12 +50,8 @@ puts ''
 board1 = Board.new(pick , "O")
 grid_array = board1.update_grid
 #display
-puts "#{grid_array[0]} | #{grid_array[1]} | #{grid_array[2]}
----------
-#{grid_array[3]} | #{grid_array[4]} | #{grid_array[5]}
----------
-#{grid_array[6]} | #{grid_array[7]} | #{grid_array[8]}"
-puts ''
+
+puts Display.display_grid((1..9).to_a)
 
 puts "#{player2_name} Pick an avalible number"
 pick = gets.chomp.to_i
@@ -77,15 +68,9 @@ end
 player2.picks_array << pick
 
 board2 = Board.new(pick , "X")
-grid_array = board2.update_grid
 #display
-puts "#{grid_array[0]} | #{grid_array[1]} | #{grid_array[2]}
----------
-#{grid_array[3]} | #{grid_array[4]} | #{grid_array[5]}
----------
-#{grid_array[6]} | #{grid_array[7]} | #{grid_array[8]}"
+puts Display.display_grid(board2.update_grid)
 puts ''
-
 #  ---- iterate till the end of the game----
 # puts the name of the winner or if the game is draw ('old lady')
-end  
+end 

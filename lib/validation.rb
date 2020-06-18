@@ -19,6 +19,6 @@ module Validation
 # ARRAY_POSITIONS.include?(pick)? true : result false   
 end
 
-# teste 
-include Validation
-p Validation.not_picked?(6, [1, 2, 7, "X", 6])
+# # teste 
+# include Validation
+# p Validation.not_picked?(6, [1, 2, 7, "X", 6])
