@@ -1,5 +1,5 @@
-# inputs : number picked(integer) and player( cross or circle) string : X or O
-# outputs : [1 , X , 3, 4, 5, 6, 7, 8, 9]
+require_relative 'validation.rb'
+
 class Board
   attr_accessor :grid
   def initialize(grid = [1, 2, 3, 4, 5, 6, 7, 8, 9])
@@ -15,4 +15,6 @@ class Board
   def grid_filled?
     @grid.all?(String)
   end
+
+  include Validation
 end

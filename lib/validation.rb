@@ -6,7 +6,7 @@ module Validation
     ARRAY_POSITIONS.include?(pick)
   end
 
-  def not_picked?(pick, board_grid)
-    board_grid.include?(pick)
+  def not_picked?(pick)
+    self.grid.include?(pick)
   end
 end
