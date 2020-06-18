@@ -19,7 +19,7 @@ module Display
 ---------
 #{grid_array[3]} | #{grid_array[4]} | #{grid_array[5]}
 ---------
-#{grid_array[6]} | #{grid_array[7]} | #{grid_array[8]}\n"
+#{grid_array[6]} | #{grid_array[7]} | #{grid_array[8]}\n \n"
   end
 
   def pick_number(name)
