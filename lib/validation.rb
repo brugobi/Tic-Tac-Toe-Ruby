@@ -7,6 +7,6 @@ module Validation
   end
 
   def not_picked?(pick)
-    self.grid.include?(pick)
+    grid.include?(pick)
   end
 end
