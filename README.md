@@ -34,9 +34,12 @@ In this project we tried to build a *tic-tac-toe* game on the command line where
  - Copy the clone command (either the SSH format or the HTTPS). ...
  - From a terminal window, change to the local directory where you want to clone your repository.
 
-**To test *tic-tac-toe* game:**
+**To start *tic-tac-toe* game:**
+
  - You need to have ruby installed on your machine.
- - After Cloning the repo in your local machin, execute  **main** command in your terminal.
+ - run command ``git clone https://github.com/brugobi/Tic-Tac-Toe-Ruby.git`` to clone the repository
+ - go into the folder containing the project by typing ``cd Tic-Tac-Toe-Ruby``
+ - type in your terminal the command `` ruby bin/main `` or ``just bin/main``
 
 ## Authors
 
