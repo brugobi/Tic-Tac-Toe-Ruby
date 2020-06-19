@@ -1,78 +1,72 @@
 #!/usr/bin/env ruby
+require_relative '../lib/player.rb'
+require_relative '../lib/board.rb'
+require_relative '../lib/game.rb'
 
-# programme prints "Welcome to Tic Tac Toe game"
-# programme asks the player1 name
-# proramme prints " #{playes1 name} your totem is O"
-# programme asks the player2 name
-# proramme prints " #{playes2 name} your totem is X"
-# programme prints the Board
-# programme asks palayer1 : "Pick an avalible number"
-# programme validates the picks if it's not avalible programme
-# prints "Sorry this number is not avalible anymore, choose an other one"
-# programme displays new updated board
-# programme asks player2 : "Pick an avalible number"
-# programme validates the picks if it's not avalible programme prints
-# "Sorry this number is not avalible anymore, choose an other one"
-# programme displays new updated board
-# ---- iterate till the end of the game----
-# 3 cases:
-#     programme displays : "player1/2 is the winner"
-#     programme displays : "Old women (According to the brazilian version)"
+# Initialize the game
 
-# Data recived from user
-#     the name of the player in a string variable player_name1/2
-#     the numbers that a player picks are stored in an integer array picks_player1/2
+player1 = Player.new('O')
+player2 = Player.new('X')
+valid_pick = 0
+game = Game.new(player1, player2)
 
-puts '*********************************************'
-puts ''
-puts '******* Welcome to Tic Tac Toe game *********'
-puts ''
-puts '*********************************************'
-puts 'player 1: Please enter your name'
-player1_name = gets.chomp.capitalize
-puts ''
-puts "#{player1_name} your totem is O"
-puts ''
-puts 'player 2: Please enter your name'
-puts ''
-player2_name = gets.chomp.capitalize
-puts ''
-puts "#{player2_name} your totem is X"
-puts ''
-puts '1 | 2 | 3
----------
-4 | 5 | 6
----------
-7 | 8 | 9'
-puts ''
-puts "#{player1_name} Pick an avalible number"
-picks_player1 = []
-picks_player1 << gets.chomp.to_i
-# if the number was already choosen
-# diplay: Sorry this number is not avalible anymore, choose an other one
-# if is the number is out of the range
-# diplay: Please, choose a number avalible from 1 to 9
-# else display the board
-puts ''
-puts '1 | 2 | 3
----------
-4 | 5 | 6
----------
-7 | 8 | 9'
-puts ''
-puts "#{player2_name} Pick an avalible number"
-picks_player2 = []
-picks_player2 << gets.chomp.to_i
-# if the number was already choosen,
-#  diplay: Sorry this number is not avalible anymore, choose an other one
-# if is the number is out of the range,
-#  diplay: Please, choose a number avalible from 1 to 9
-# else display the board
-puts ''
-puts '1 | 2 | 3
----------
-4 | 5 | 6
----------
-7 | 8 | 9'
-#  ---- iterate till the end of the game----
-# puts the name of the winner or if the game is draw ('old lady')
+puts game.welcome_message
+
+init_player = proc do |player, numb|
+  puts game.enter_player(numb)
+  player.name = gets.chomp.capitalize
+  while player.name.empty?
+    puts game.validate_name
+    player.name = gets.chomp.capitalize
+  end
+  puts game.assign_totem(player)
+end
+
+init_player.call(player1, 1)
+init_player.call(player2, 2)
+
+# playing
+
+board = Board.new
+puts game.display_grid(board.grid)
+
+validate_pick = proc do |pick|
+  valid_pick = pick
+  until board.pick_valid?(pick) && board.not_picked?(pick)
+    if !board.pick_valid?(pick)
+      puts game.pick_not_valid
+      pick = gets.chomp.to_i
+    elsif !board.not_picked?(pick)
+      puts game.already_picked
+      pick = gets.chomp.to_i
+    end
+  end
+  valid_pick = pick
+end
+
+turn = proc do |player|
+  puts game.pick_number(player.name)
+  pick = gets.chomp.to_i
+  validate_pick.call(pick)
+  pick = valid_pick
+  player.picks_array << pick
+  board.update_grid(pick, player.totem)
+  puts game.display_grid(board.grid)
+end
+
+loop do
+  turn.call(player1)
+  break if player1.winner? || board.grid_filled?
+
+  turn.call(player2)
+  break if player2.winner? || board.grid_filled?
+end
+
+# end of the game
+if player1.winner?
+  puts game.the_winner(player1.name)
+elsif player2.winner?
+  puts game.the_winner(player2.name)
+else
+  puts game.draw
+end
