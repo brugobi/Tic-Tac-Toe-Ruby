@@ -10,6 +10,10 @@ module Display
     "\nPlayer#{number}, Please enter your name"
   end
 
+  def validate_name
+    "\nPlease enter a correct name\n"
+  end
+
   def assign_totem(player)
     "\n#{player.name} your totem is #{player.totem}\n"
   end

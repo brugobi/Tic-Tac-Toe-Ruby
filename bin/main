@@ -15,6 +15,10 @@ puts game.welcome_message
 init_player = proc do |player, numb|
   puts game.enter_player(numb)
   player.name = gets.chomp.capitalize
+  until !player.name.empty?
+    puts game.validate_name
+    player.name = gets.chomp.capitalize
+  end
   puts game.assign_totem(player)
 end
 
