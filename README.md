@@ -27,10 +27,6 @@ In this project we tried to build a *tic-tac-toe* game on the command line where
 - VSCode
 - Linter : Rubocop
 
-## Live demo
-
-[repl.it](https://repl.it/@CalyCherkaoui/Tic-Tac-Toe-Ruby)
-
 ## Getting Started
 
 **Cloning a Git repository:**
