@@ -7,7 +7,7 @@ require_relative '../lib/game.rb'
 
 player1 = Player.new('O')
 player2 = Player.new('X')
-
+valid_pick = 0
 game = Game.new(player1, player2)
 
 puts game.welcome_message
@@ -27,6 +27,7 @@ board = Board.new
 puts game.display_grid(board.grid)
 
 validate_pick = proc do |pick|
+  valid_pick = pick
   until board.pick_valid?(pick) && board.not_picked?(pick)
     if !board.pick_valid?(pick)
       puts game.pick_not_valid
@@ -36,12 +37,14 @@ validate_pick = proc do |pick|
       pick = gets.chomp.to_i
     end
   end
+  valid_pick = pick
 end
 
 turn = proc do |player|
   puts game.pick_number(player.name)
   pick = gets.chomp.to_i
-  validate_pick.call(pick, board.grid)
+  validate_pick.call(pick)
+  pick = valid_pick
   player.picks_array << pick
   board.update_grid(pick, player.totem)
   puts game.display_grid(board.grid)
