@@ -3,20 +3,31 @@ require_relative './lib/player'
 require_relative './lib/board'
 
 describe Player do
-  let(:player_test) { Player.new('X', 'player1', [1, 4, 7]) }
+  let(:player_test1) { Player.new('X', 'player1', [1, 4, 7]) }
+  let(:player_test2) { Player.new('X', 'player2', [1, 3, 7]) }
   describe '#winner?' do
-    it 'winner is player 1' do
-      expect(player_test.winner?).to eql(true)
+    it 'player2 is not a winner' do
+        expect(player_test2.winner?).not_to eql(true)
+    end
+    it 'player 1 is a winner' do
+      expect(player_test1.winner?).to eql(true)
     end
   end
 end
 
 describe Board do
-  let(:test_board) { Board.new([1, 2, 'X']) }
+
+  let(:test_board2) { Board.new([1, 2, 'X']) }
+  let(:test_board3) { Board.new(['X', 'O', 'X']) }
   describe '#grid_filled?' do
     it 'grid is not completely filled with strings' do
-      expect(test_board.grid_filled?).not_to eql(true)
+      expect(test_board2.grid_filled?).not_to eql(true)
     end
+
+    it 'grid is completely filled with strings' do
+        expect(test_board3.grid_filled?).to eql(true)
+    end
+
   end
   let(:test_pick) { 9 }
   describe '#pick_valid?' do
