@@ -1,6 +1,6 @@
 # spec/project_spec.rb
-require './lib/player'
-require './lib/board'
+require_relative './lib/player'
+require_relative './lib/board'
 
 describe Player do
   let(:player_test) { Player.new('X', 'player1', [1, 4, 7]) }
