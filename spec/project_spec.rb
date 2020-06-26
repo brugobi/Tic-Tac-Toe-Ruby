@@ -15,7 +15,7 @@ describe Board do
   let (:test_board) { Board.new([1, 2, 'X']) }
   describe '#grid_filled?' do
     it 'grid is not completely filled with strings' do
-      expect(test_board.grid_filled?).to eql(false)
+      expect(test_board.grid_filled?).not_to eql(true)
     end
   end
   let (:test_pick) { 9 }
@@ -28,6 +28,13 @@ describe Board do
   describe '#not_picked?' do
     it 'position not picked yet?' do
       expect(test_board.not_picked?(test_not_picked)).to eql(false)
+    end
+  end
+  let (:pick) {2}
+  let (:totem) {'X'}
+  describe '#update_grid' do
+    it 'update the grid of the bord by puting the totem in the right position' do
+        expect(test_board.update_grid(pick, totem)).to eq([1, 'X', 'X'])
     end
   end
 end
