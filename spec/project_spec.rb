@@ -1,6 +1,19 @@
 # spec/project_spec.rb
 require_relative '../lib/player'
 require_relative '../lib/board'
+require_relative '../lib/game'
+
+describe Game do
+  player1 = 'Houda'
+  player2 = 'Angel'
+  let(:game1) { Game.new(player1, player2) }
+  describe 'initialize' do
+    it 'testing initialize method' do
+      expect(game1.player1).to eql(player1)
+      expect(game1.player2).to eql(player2)
+    end
+  end
+end
 
 describe Player do
   let(:player_test1) { Player.new('X', 'player1', [1, 4, 7]) }
@@ -14,9 +27,9 @@ describe Player do
       expect(player_test1.winner?).to eql(true)
     end
   end
-  context "testing a draw situation when no player is a winner" do
+  context 'testing a draw situation when no player is a winner' do
     it 'it s a draw , no player is winining' do
-      expect(player_test2.winner? && player_test3.winner? ).not_to eql(true)
+      expect(player_test2.winner? && player_test3.winner?).not_to eql(true)
     end
   end
 end
